@@ -1,5 +1,5 @@
 Fatömegszámító program
-Készítette: Lászlók András (2022-2023)
+Készítette: Lászlók András (2022)
 Készült az alábbi műben lévő paraméterek
 és fatérfogat függvény felhasznlásával:
 Dr. Sopp László, Kolozs László (2000):
