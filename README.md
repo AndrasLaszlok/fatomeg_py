@@ -15,4 +15,4 @@ A program a vágáslap feletti összes
 Vastagfa: kéreggel együtt 5 cm-nél vastagabb faanyag.
 Vékonyfa: kéreggel együtt 5 cm és annál vékonyabb faanyag.
 Működéséhez szükséges a PyQt5 modul telepítése.
-A szokásos módon "python3 -m fatomeg" paranccsal futtatható.
+A repository root mappájából a "python -m fatomeg" paranccsal futtatható.
