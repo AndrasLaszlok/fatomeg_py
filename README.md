@@ -3,4 +3,5 @@ Fatömegszámító program. Készítette: Lászlók András (2022). Készült az
 - gazdasági tervek készítéséhez,
 - hatósági eljárások során,
 - üzleti célra.
+
 A program a vágáslap feletti összes (vastag+vékony) fatömeget számítja ki. Vastagfa: kéreggel együtt 5 cm-nél vastagabb faanyag. Vékonyfa: kéreggel együtt 5 cm és annál vékonyabb faanyag. Működéséhez szükséges a PyQt5 modul telepítése. A repository root mappájából a "python -m fatomeg" paranccsal futtatható.
