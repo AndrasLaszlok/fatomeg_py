@@ -1,4 +1,6 @@
-from PyQt5.QtWidgets import QWidget, QMainWindow, QApplication, QLabel, QComboBox, QSpinBox, QPushButton, QVBoxLayout, QAction
+from PyQt5.QtWidgets import (QWidget, QMainWindow, QApplication, QLabel,
+                            QComboBox, QSpinBox, QPushButton,
+                            QVBoxLayout, QAction)
 from PyQt5.QtCore import Qt
 
 import sys
@@ -8,24 +10,27 @@ class InfoWindow(QWidget):
     def __init__(self, *args, **kwargs):
         super(InfoWindow, self).__init__(*args, **kwargs)
         
+        nevjegy = "Fatömegszámító program:\n\n\
+        Készítette: Lászlók András (2022)\n\n\
+        Készült az alábbi műben lévő paraméterek\n\
+        és fatérfogat függvény felhasznlásával:\n\
+        Dr. Sopp László, Kolozs László (2000):\n\
+        Fatömegszámítási táblázatok (harmadik átdolgozott kiadás).\n\
+        Állami Erdészeti Szolgálat, Budapest.\n\n\
+        A program a vágáslap feletti összes\n\
+        (vastag+vékony) fatömeget számítja ki.\n\n\
+        Vastagfa: kéreggel együtt 5 cm-nél vastagabb faanyag.\n\
+        Vékonyfa: kéreggel együtt 5 cm és annál vékonyabb faanyag.\n\n\
+        A program egy hobbiprojekt. \n\n\
+        Nem használható fel semmilyen hivatalos célra különösen:\n\
+            - gazdasági tervek készítéséhez,\n\
+            - hatósági eljárások során,\n\
+            - üzleti célra."
+        
         self.setWindowTitle("Névjegy")
         
         layout = QVBoxLayout()
-        self.label = QLabel("Fatömegszámító program:\n\n\
-                            Készítette: Lászlók András (2022)\n\n\
-                            Készült az alábbi műben lévő paraméterek\n\
-                            és fatérfogat függvény felhasznlásával:\n\
-                            Dr. Sopp László, Kolozs László (2000):\n\
-                            Fatömegszámítási táblázatok (harmadik átdolgozott kiadás).\n\
-                            Állami Erdészeti Szolgálat, Budapest.\n\n\
-                            A program a vágáslap feletti összes\n\
-                            (vastag+vékony) fatömeget számítja ki.\n\n\
-                            Vastagfa: kéreggel együtt 5 cm-nél vastagabb faanyag.\n\
-                            Vékonyfa: kéreggel együtt 5 cm és annál vékonyabb faanyag.\n\n\
-                            A program egy hobbiprojekt. Nem használható fel semmilyen hivatalos célra különösen:\n\
-                            - gazdasági tervek készítéséhez,\n\
-                            - hatósági eljárások során,\n\
-                            - üzleti célra.")
+        self.label = QLabel(nevjegy)
 
         layout.addWidget(self.label)
         self.setLayout(layout)
@@ -187,9 +192,10 @@ class MainWindow(QMainWindow):
 
         D = self.widget3a.value()
         H = self.widget4a.value()
-        V = (p1 + p2 * D * H + p3 * D + p4 * H) * (H / (H - 1.3)) ** k * (D ** 2 * H / 10 ** 8)
+        V = ((p1 + p2 * D * H + p3 * D + p4 * H) * (H / (H - 1.3)) 
+            ** k * (D ** 2 * H / 10 ** 8))
 
-        self.widget7.setText(f"{V}")
+        self.widget7.setText(f"{round(V,2)}")
 
 def run():
     """Modul futtatása"""
