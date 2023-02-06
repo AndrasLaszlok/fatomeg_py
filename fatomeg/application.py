@@ -5,27 +5,27 @@ from PyQt5.QtWidgets import (QWidget, QMainWindow, QApplication, QLabel,
                             QVBoxLayout, QAction)
 from PyQt5.QtCore import Qt
 
+nevjegy = """Fatömegszámító program:
+Készítette: Lászlók András (2022)
+Készült az alábbi műben lévő paraméterek
+és fatérfogat függvény felhasznlásával:
+Dr. Sopp László, Kolozs László (2000):
+Fatömegszámítási táblázatok (harmadik átdolgozott kiadás).
+Állami Erdészeti Szolgálat, Budapest.
+A program a vágáslap feletti összes
+(vastag+vékony) fatömeget számítja ki.
+Vastagfa: kéreggel együtt 5 cm-nél vastagabb faanyag.
+Vékonyfa: kéreggel együtt 5 cm és annál vékonyabb faanyag.
+A program egy hobbiprojekt.
+Nem használható fel semmilyen hivatalos célra különösen:
+    - gazdasági tervek készítéséhez,
+    - hatósági eljárások során,
+    - üzleti célra."""
+
 class InfoWindow(QWidget):
 
     def __init__(self, *args, **kwargs):
         super(InfoWindow, self).__init__(*args, **kwargs)
-        
-        nevjegy = "Fatömegszámító program:\n\n\
-        Készítette: Lászlók András (2022)\n\n\
-        Készült az alábbi műben lévő paraméterek\n\
-        és fatérfogat függvény felhasznlásával:\n\
-        Dr. Sopp László, Kolozs László (2000):\n\
-        Fatömegszámítási táblázatok (harmadik átdolgozott kiadás).\n\
-        Állami Erdészeti Szolgálat, Budapest.\n\n\
-        A program a vágáslap feletti összes\n\
-        (vastag+vékony) fatömeget számítja ki.\n\n\
-        Vastagfa: kéreggel együtt 5 cm-nél vastagabb faanyag.\n\
-        Vékonyfa: kéreggel együtt 5 cm és annál vékonyabb faanyag.\n\n\
-        A program egy hobbiprojekt. \n\n\
-        Nem használható fel semmilyen hivatalos célra különösen:\n\
-            - gazdasági tervek készítéséhez,\n\
-            - hatósági eljárások során,\n\
-            - üzleti célra."
         
         self.setWindowTitle("Névjegy")
         
@@ -50,7 +50,8 @@ class MainWindow(QMainWindow):
         self.widget1.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
 
         self.widget2 = QComboBox()
-        self.widget2.addItems(["Akác",
+        self.widget2.addItems([
+            "Akác",
             "Bükk",
             "Cser",
             "Fekete dió",
@@ -77,7 +78,8 @@ class MainWindow(QMainWindow):
             "Feketefenyő",
             "Jegenyefenyő",
             "Lucfenyő",
-            "Vörösfenyő"])
+            "Vörösfenyő"
+            ])
 
         self.widget3 = QLabel("Adja meg a mellmagassági átmérőt (cm):")
         font = self.widget3.font()
@@ -184,7 +186,7 @@ class MainWindow(QMainWindow):
             [5.3501E+03,-1.2820E-02,1.0617E+00,-3.9182E+01,1.0000E+00],
             [3.9833E+03,-1.5907E-01,-8.3139E+00,5.0847E+00,3.0000E+00],
             [2.6830E+03,4.8460E-03,-1.4928E+01,4.0281E+01,3.0000E+00]
-        ]
+            ]
 
         p1 = PAR[f][0]
         p2 = PAR[f][1]
@@ -194,7 +196,7 @@ class MainWindow(QMainWindow):
 
         D = self.widget3a.value()
         H = self.widget4a.value()
-        V = (p1 + p2*D*H + p3*D + p4*H) * (H/(H-1.3))**k * D**2 * H/10**8
+        V = (p1+p2*D*H+p3*D+p4*H) * (H/(H-1.3))**k * D**2 * H / 10**8
 
         self.widget7.setText(f"{round(V,2)}")
 
